@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:51:15 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/09 14:33:54 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/03/09 15:13:38 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int		ft_printf(char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			/*format = ft_parse_flags(format, &mod);
+			format = ft_parse_flags(format, &mod);
 			format = ft_parse_width(format, &mod, args);
-			format = ft_parse_length(format, &mod);*/
+			format = ft_parse_length(format, &mod);
 			format = ft_parse_type((char *)format, &mod);
 			ft_read_conv((char *)format, &mod, args);
 		}
