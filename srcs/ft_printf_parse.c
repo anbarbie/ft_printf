@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_parser.c                                 :+:      :+:    :+:   */
+/*   ft_printf_parse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/09 14:03:06 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/09 14:35:19 by antbarbi         ###   ########.fr       */
+/*   Created: 2020/03/12 13:37:05 by antbarbi          #+#    #+#             */
+/*   Updated: 2020/03/12 16:53:49 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,100 +15,108 @@
 
 char	*ft_parse_flags(char *str, t_modulo *mod)
 {
-	while (*str)
+	int		priority;
+
+	priority = false;
+	while (*str == '0' || *str == '-')
 	{
-		if (*str == '0' || *str == '-')
+		if (*str == '0' && priority == false)
+			mod->flags.zero = true;
+		if (*str == '-')
 		{
-			if (*str == '-')
-				mod->flags.minus = 1;
-			if (*str == '0')
-				mod->flags.zero = 1;
+			mod->flags.zero = false;
+			mod->flags.minus = true;
+			priority = true;
 		}
 		str++;
 	}
 	return (str);
 }
 
-char	*ft_parse_width(char *str, t_modulo *mod, va_list args)
+char	*ft_parse_width_pad(char *str, t_modulo *mod, va_list args)
 {
-	char	tmp[11];
+	char	stock[11];
 	int		i;
 
 	i = 0;
 	if (*str == '*')
 	{
 		mod->width.padding = va_arg(args, int);
-		if (mod->width.padding < 0)
-		{
-			mod->width.padding *= -1;
-			mod->flags.minus = 1;
-		}
 		str++;
 	}
 	else if (*str >= '1' && *str <= '9')
 	{
 		while (ft_isdigit(*str))
 		{
-			tmp[i] = *str;
+			stock[i] = *str;
 			i++;
 			str++;
 		}
-		tmp[i] = '\0';
-		mod->width.padding = ft_atoi(tmp);
+		stock[i] = '\0';
+		mod->width.padding = ft_atoi(stock);
 	}
+	return (str);
+}
+
+char	*ft_parse_width(char *str, t_modulo *mod, va_list args)
+{
+	char	stock[11];
+	int		i;
+
+	i = 0;
 	if (*str == '.')
 	{
-		i = 0;
 		str++;
 		if (*str == '*')
 		{
-			mod->width.precision = va_arg(args, int);
+			mod->width.precision = va_args(args, int);
 			return (str + 1);
 		}
-		while (ft_isdigit(*str))
+		else if (*str >= '1' && *str <= '9')
 		{
-			tmp[i] = *str;
-			str++;
-			i++;
+			while (ft_isdigit(*str))
+			{
+				stock[i] = *str;
+				i++;
+				str++;
+			}
+			stock[i] = '\0';
+			mod->width.precision = ft_atoi(stock);
 		}
-		tmp[i] = '\0';
-		mod->width.precision = ft_atoi(tmp);
 	}
-	return (str);
+	return (ft_parse_width_pad(str, &mod, args));
 }
 
 char	*ft_parse_length(char *str, t_modulo *mod)
 {
 	if (*str == 'h')
 	{
-		if (*str + 1 == 'h')
+		str++;
+		if (*str == 'h')
 		{
-			mod->length.hh = 1;
+			mod->length.hh = true;
 			str++;
 		}
 		else
-			mod->length.h = 1;
-		str++;
+			mod->length.h = true;
 	}
 	else if (*str == 'l')
 	{
-		if (*str + 1 == 'l')
+		str++;
+		if (*str == 'l')
 		{
-			mod->length.ll = 1;
+			mod->length.ll = true;
 			str++;
 		}
 		else
-			mod->length.l = 1;
-		str++;
+			mod->length.l = true;
 	}
 	return (str);
 }
 
-char	*ft_parse_type(char *str, t_modulo *mod)
+char	*ft_parse_type(char *str, t_modulo *mod, va_list args)
 {
-	static char *tmp = "cspdiuxX%";
-
-	if (ft_strchr(tmp, *str))
+	if (ft_strchr("cspdiuxX%%", *str))
 		mod->type.c = *str;
 	return (str);
 }

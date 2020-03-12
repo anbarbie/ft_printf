@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:51:15 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/09 15:13:38 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/03/12 13:31:40 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 void	ft_init_struct(t_modulo *mod)
 {
-	mod->flags.minus = 0;
-	mod->flags.zero = 0;
+	mod->flags.minus = false;
+	mod->flags.zero = false;
 	mod->width.padding = 0;
 	mod->width.precision = -1;
-	mod->length.hh = 0;
-	mod->length.h = 0;
-	mod->length.ll = 0;
-	mod->length.l = 0;
+	mod->length.hh = false;
+	mod->length.h = false;
+	mod->length.ll = false;
+	mod->length.l = false;
 	mod->fd = 1;
 }
 

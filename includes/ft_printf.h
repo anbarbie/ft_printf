@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:53:36 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/09 14:44:04 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/03/12 16:53:09 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 typedef struct		s_flags
 {
-	int			minus;
-	int			zero;
+	bool		minus;
+	bool		zero;
 }					t_flags;
 
 typedef struct		s_width
@@ -33,10 +33,10 @@ typedef struct		s_width
 
 typedef	struct		s_length
 {
-	int			hh;
-	int			h;
-	int			ll;
-	int			l;
+	bool		hh;
+	bool		h;
+	bool		ll;
+	bool		l;
 }					t_length;
 
 typedef struct		s_type
@@ -72,6 +72,7 @@ int		ft_conv_u(t_modulo *mod, unsigned int n);
 int		ft_conv_p(t_modulo *mod, uintptr_t *p);
 char	*ft_parse_flags(char *str, t_modulo *mod);
 char	*ft_parse_width(char *str, t_modulo *mod, va_list args);
+char	*ft_parse_width_pad(char *str, t_modulo *mod, va_list args);
 char	*ft_parse_length(char *str, t_modulo *mod);
 char	*ft_parse_type(char *str, t_modulo *mod);
 

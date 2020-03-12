@@ -3,7 +3,7 @@
 
 int	main()
 {
-	printf("real : %10d\n", 50);
-	ft_printf("mine : %10d\n", 50);
+	printf("[%*5d]\n", 5, 9);
+	/*ft_printf("mine : %s  \n", "salut\n");*/
 	return (0);
 }
