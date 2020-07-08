@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 16:48:35 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/09 12:49:25 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/03/23 16:59:27 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 typedef	struct		s_list
 {

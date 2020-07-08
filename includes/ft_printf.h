@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+		/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 typedef struct		s_flags
 {
@@ -30,14 +31,6 @@ typedef struct		s_width
 	int			padding;
 	int			precision;
 }					t_width;
-
-typedef	struct		s_length
-{
-	bool		hh;
-	bool		h;
-	bool		ll;
-	bool		l;
-}					t_length;
 
 typedef struct		s_type
 {
@@ -52,7 +45,6 @@ typedef struct		s_modulo
 	size_t 		buff_index;
 	t_flags		flags;
 	t_width		width;
-	t_length	length;
 	t_type		type;
 }					t_modulo;
 
@@ -73,7 +65,6 @@ int		ft_conv_p(t_modulo *mod, uintptr_t *p);
 char	*ft_parse_flags(char *str, t_modulo *mod);
 char	*ft_parse_width(char *str, t_modulo *mod, va_list args);
 char	*ft_parse_width_pad(char *str, t_modulo *mod, va_list args);
-char	*ft_parse_length(char *str, t_modulo *mod);
 char	*ft_parse_type(char *str, t_modulo *mod);
 
 #endif

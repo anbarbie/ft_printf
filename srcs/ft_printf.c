@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:51:15 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/12 13:31:40 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/06/30 14:46:48 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ void	ft_init_struct(t_modulo *mod)
 	mod->flags.zero = false;
 	mod->width.padding = 0;
 	mod->width.precision = -1;
-	mod->length.hh = false;
-	mod->length.h = false;
-	mod->length.ll = false;
-	mod->length.l = false;
 	mod->fd = 1;
 }
 
@@ -62,9 +58,9 @@ int		ft_printf(char *format, ...)
 			format++;
 			format = ft_parse_flags(format, &mod);
 			format = ft_parse_width(format, &mod, args);
-			format = ft_parse_length(format, &mod);
 			format = ft_parse_type((char *)format, &mod);
-			ft_read_conv((char *)format, &mod, args);
+			if ((ft_read_conv((char *)format, &mod, args)) == -1)
+				return (-1);
 		}
 		else
 			ft_fill_buff_c(&mod, *format);

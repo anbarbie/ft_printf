@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:37:05 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/12 16:53:49 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/08 14:01:16 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,52 +69,22 @@ char	*ft_parse_width(char *str, t_modulo *mod, va_list args)
 		str++;
 		if (*str == '*')
 		{
-			mod->width.precision = va_args(args, int);
+			mod->width.precision = va_arg(args, int);
 			return (str + 1);
 		}
-		else if (*str >= '1' && *str <= '9')
+		while (ft_isdigit(*str))
 		{
-			while (ft_isdigit(*str))
-			{
-				stock[i] = *str;
-				i++;
-				str++;
-			}
-			stock[i] = '\0';
-			mod->width.precision = ft_atoi(stock);
-		}
-	}
-	return (ft_parse_width_pad(str, &mod, args));
-}
-
-char	*ft_parse_length(char *str, t_modulo *mod)
-{
-	if (*str == 'h')
-	{
-		str++;
-		if (*str == 'h')
-		{
-			mod->length.hh = true;
+			stock[i] = *str;
+			i++;
 			str++;
 		}
-		else
-			mod->length.h = true;
+		stock[i] = '\0';
+		mod->width.precision = ft_atoi(stock);
 	}
-	else if (*str == 'l')
-	{
-		str++;
-		if (*str == 'l')
-		{
-			mod->length.ll = true;
-			str++;
-		}
-		else
-			mod->length.l = true;
-	}
-	return (str);
+	return (ft_parse_width_pad(str, mod, args));
 }
 
-char	*ft_parse_type(char *str, t_modulo *mod, va_list args)
+char	*ft_parse_type(char *str, t_modulo *mod)
 {
 	if (ft_strchr("cspdiuxX%%", *str))
 		mod->type.c = *str;
