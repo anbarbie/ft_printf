@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:51:15 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/06/30 14:46:48 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/11 01:41:28 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_init_struct(t_modulo *mod)
 	mod->fd = 1;
 }
 
-int		ft_read_conv(char *str, t_modulo *mod, va_list args)
+int		ft_read_type(t_modulo *mod, va_list args)
 {
 	if (mod->type.c == 'c')
 		ft_conv_c(mod, va_arg(args, int));
@@ -59,7 +59,7 @@ int		ft_printf(char *format, ...)
 			format = ft_parse_flags(format, &mod);
 			format = ft_parse_width(format, &mod, args);
 			format = ft_parse_type((char *)format, &mod);
-			if ((ft_read_conv((char *)format, &mod, args)) == -1)
+			if ((ft_read_type(&mod, args)) == -1)
 				return (-1);
 		}
 		else

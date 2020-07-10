@@ -50,7 +50,7 @@ typedef struct		s_modulo
 
 void	ft_init_struct(t_modulo *mod);
 int		ft_printf(char *format, ...);
-int		ft_read_conv(char *str, t_modulo *mod, va_list args);
+int		ft_read_type(t_modulo *mod, va_list args);
 int		ft_write_full_buff(t_modulo *mod);
 int		ft_fill_buff_c(t_modulo *mod, char c);
 int		ft_fill_padding(t_modulo *mod, int n, char c);
@@ -66,5 +66,7 @@ char	*ft_parse_flags(char *str, t_modulo *mod);
 char	*ft_parse_width(char *str, t_modulo *mod, va_list args);
 char	*ft_parse_width_pad(char *str, t_modulo *mod, va_list args);
 char	*ft_parse_type(char *str, t_modulo *mod);
+char	*ft_itoa_base_addr(uintptr_t n, char *base);
+char	*ft_itoa_base_un(uintptr_t n, char *base);
 
 #endif

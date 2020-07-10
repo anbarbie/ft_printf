@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:20:21 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/09 12:49:14 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/11 01:43:39 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		ft_fill_str(uintptr_t nb, int index, char *str, char *base)
 {
-	int		len_base;
+	unsigned int	len_base;
 
 	len_base = (unsigned int)ft_strlen(base);
 	if (nb >= len_base)
