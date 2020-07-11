@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/11 02:00:40 by antbarbi          #+#    #+#             */
+/*   Updated: 2020/07/11 02:05:13 by antbarbi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./includes/ft_printf.h"
-#include "./libft/libft.h"
+#include <stdio.h>
 
 int	main()
 {
-	printf("real [%05p]\n", 50);
-	ft_printf("fake [%05p]\n", 50);
+	printf("real [%d]\n", 50);
+	ft_printf("fake [%d]\n", 50);
 	return (0);
 }
