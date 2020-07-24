@@ -49,6 +49,9 @@ typedef struct		s_modulo
 }					t_modulo;
 
 void	ft_init_struct(t_modulo *mod);
+void	ft_handle_str(t_modulo *mod, int len);
+void	ft_handle_int(t_modulo *mod, char *str, int len, int neg);
+void	ft_handle_buff_padding_int(t_modulo *mod, int len, int negative);
 int		ft_printf(char *format, ...);
 int		ft_read_type(t_modulo *mod, va_list args);
 int		ft_write_full_buff(t_modulo *mod);
@@ -64,7 +67,7 @@ int		ft_conv_u(t_modulo *mod, unsigned int n);
 int		ft_conv_p(t_modulo *mod, uintptr_t *p);
 char	*ft_parse_flags(char *str, t_modulo *mod);
 char	*ft_parse_width(char *str, t_modulo *mod, va_list args);
-char	*ft_parse_width_pad(char *str, t_modulo *mod, va_list args);
+char	*ft_parse_width_2(char *str, t_modulo *mod, va_list args);
 char	*ft_parse_type(char *str, t_modulo *mod);
 char	*ft_itoa_base_addr(uintptr_t n, char *base);
 char	*ft_itoa_base_un(uintptr_t n, char *base);

@@ -6,43 +6,36 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:07:27 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/11 02:13:02 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:44:43 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../libft/libft.h"
-
-#include <stdio.h>
+#include "ft_printf.h"
+#include "libft.h"
 
 int		ft_conv_int(t_modulo *mod, int n)
 {
-	char	*str;
+	char			*str;
+	int				len;
+	int				neg;
+	unsigned int	nbr;
 
-	if (!(str = ft_itoa(n)))
-		return (-1);
-	if (mod->width.precision == 0 && n == 0)
-		return (0);
-	if (mod->width.precision > (int)ft_strlen(str))
+	neg = 0;
+	if (n < 0)
 	{
-		ft_fill_padding(mod, mod->width.precision - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);	
-	}
-	else if (mod->flags.minus == true)
-	{
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), ' ');
-	}
-	else if (mod->flags.zero == true)
-	{
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
+		nbr = -n;
+		neg = 1;
 	}
 	else
-	{
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), ' ');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-	}
+		nbr = n;
+	if (!(str = ft_itoa(nbr)))
+		return (-1);
+	if (mod->width.precision == 0 && str[0] == '0')
+		len = 0;
+	else
+		len = ft_strlen(str);
+	ft_handle_int(mod, str, len, neg);
+	free(str);
 	return (0);
 }
 
@@ -61,7 +54,7 @@ int		ft_conv_x(t_modulo *mod, unsigned int n, int hex)
 	if (mod->width.precision > (int)ft_strlen(str))
 	{
 		ft_fill_padding(mod, mod->width.precision - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);	
+		ft_fill_buff_s(mod, ft_strlen(str), str);
 	}
 	else if (mod->flags.minus == true)
 	{
@@ -92,7 +85,7 @@ int		ft_conv_u(t_modulo *mod, unsigned int n)
 	if (mod->width.precision > (int)ft_strlen(str))
 	{
 		ft_fill_padding(mod, mod->width.precision - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);	
+		ft_fill_buff_s(mod, ft_strlen(str), str);
 	}
 	else if (mod->flags.minus == true)
 	{
@@ -133,10 +126,10 @@ int		ft_conv_p(t_modulo *mod, uintptr_t *p)
 		ft_fill_buff_s(mod, ft_strlen(str), str);
 	}
 	else
-	{		
+	{
 		ft_fill_padding(mod, mod->width.padding - len, ' ');
 		ft_fill_buff_s(mod, 2, "0x");
-		ft_fill_buff_s(mod, ft_strlen(str), str);			
+		ft_fill_buff_s(mod, ft_strlen(str), str);
 	}
 	return (0);
 }

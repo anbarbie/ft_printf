@@ -16,7 +16,7 @@ RM = rm -rf
 
 NAME = libftprintf.a
 SRC = ft_printf.c ft_buffer.c ft_printf_parse.c ft_printf_conv_nb.c \
-		ft_printf_conv_str.c
+		ft_printf_conv_str.c ft_printf_handle.c
 
 SRC_DIR = srcs
 LIB_DIRS = Libft

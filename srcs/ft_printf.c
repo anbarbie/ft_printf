@@ -6,12 +6,12 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:51:15 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/11 01:41:28 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:10:37 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../libft/libft.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 void	ft_init_struct(t_modulo *mod)
 {
@@ -49,6 +49,7 @@ int		ft_printf(char *format, ...)
 	t_modulo	mod;
 
 	mod.buff_index = 0;
+	mod.rt = 0;
 	va_start(args, format);
 	while (*format)
 	{
@@ -68,5 +69,5 @@ int		ft_printf(char *format, ...)
 	}
 	va_end(args);
 	write(mod.fd, mod.buff, mod.buff_index);
-	return (0);
+	return (mod.rt);
 }

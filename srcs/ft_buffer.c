@@ -6,11 +6,12 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:52:38 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/03/09 13:05:21 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:10:04 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
 int		ft_write_full_buff(t_modulo *mod)
 {
@@ -29,6 +30,7 @@ int		ft_fill_buff_c(t_modulo *mod, char c)
 		return (-1);
 	mod->buff[mod->buff_index] = c;
 	mod->buff_index++;
+	mod->rt++;
 	return (0);
 }
 
@@ -56,6 +58,7 @@ void	ft_fill_buff_s(t_modulo *mod, int n, char *str)
 			ft_write_full_buff(mod);
 		mod->buff[mod->buff_index] = str[i];
 		mod->buff_index++;
+		mod->rt++;
 		i++;
 	}
 }
