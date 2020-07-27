@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 16:48:35 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/11 02:22:46 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/27 15:13:29 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long n);
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strtrim(char const *s1, const char *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);

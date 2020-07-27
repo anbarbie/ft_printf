@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:37:05 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/24 16:09:32 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/27 15:30:38 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,12 @@
 
 char	*ft_parse_flags(char *str, t_modulo *mod)
 {
-	int		priority;
-
-	priority = false;
 	while (*str == '0' || *str == '-')
 	{
-		if (*str == '0' && priority == false)
+		if (*str == '0')
 			mod->flags.zero = true;
 		if (*str == '-')
-		{
-			mod->flags.zero = false;
 			mod->flags.minus = true;
-			priority = true;
-		}
 		str++;
 	}
 	return (str);
@@ -68,16 +61,17 @@ char	*ft_parse_width(char *str, t_modulo *mod, va_list args)
 	if (*str == '*')
 	{
 		mod->width.padding = va_arg(args, int);
+		if (mod->width.padding < 0)
+		{
+			mod->width.padding *= -1;
+			mod->flags.minus = true;
+		}
 		str++;
 	}
 	else if (*str >= '1' && *str <= '9')
 	{
 		while (ft_isdigit(*str))
-		{
-			stock[i] = *str;
-			i++;
-			str++;
-		}
+			stock[i++] = *str++;
 		stock[i] = '\0';
 		mod->width.padding = ft_atoi(stock);
 	}

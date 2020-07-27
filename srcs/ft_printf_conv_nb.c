@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:07:27 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/24 16:44:43 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/27 15:09:04 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_conv_int(t_modulo *mod, int n)
 	}
 	else
 		nbr = n;
-	if (!(str = ft_itoa(nbr)))
+	if (!(str = ft_itoa((long)nbr)))
 		return (-1);
 	if (mod->width.precision == 0 && str[0] == '0')
 		len = 0;
@@ -42,66 +42,36 @@ int		ft_conv_int(t_modulo *mod, int n)
 int		ft_conv_x(t_modulo *mod, unsigned int n, int hex)
 {
 	char	*str;
+	int		len;
 
 	if (hex == 0)
 		str = ft_itoa_base_unsigned(n, "0123456789abcdef");
 	else
-		str = ft_itoa_base_unsigned(n, "0123456789ABCEDF");
+		str = ft_itoa_base_unsigned(n, "0123456789ABCDEF");
 	if (!(str))
 		return (-1);
 	if (mod->width.precision == 0 && n == 0)
-		return (0);
-	if (mod->width.precision > (int)ft_strlen(str))
-	{
-		ft_fill_padding(mod, mod->width.precision - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-	}
-	else if (mod->flags.minus == true)
-	{
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), ' ');
-	}
-	else if (mod->flags.zero == true)
-	{
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-	}
+		len = 0;
 	else
-	{
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), ' ');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-	}
+		len = ft_strlen(str);
+	ft_handle_padding(mod, str, len);
+	free(str);
 	return (0);
 }
 
 int		ft_conv_u(t_modulo *mod, unsigned int n)
 {
 	char	*str;
+	int		len;
 
 	if (!(str = ft_itoa_base_unsigned(n, "0123456789")))
 		return (-1);
 	if (mod->width.precision == 0 && n == 0)
-		return (0);
-	if (mod->width.precision > (int)ft_strlen(str))
-	{
-		ft_fill_padding(mod, mod->width.precision - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-	}
-	else if (mod->flags.minus == true)
-	{
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), ' ');
-	}
-	else if (mod->flags.zero == true)
-	{
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-	}
+		len  = 0;
 	else
-	{
-		ft_fill_padding(mod, mod->width.padding - (int)ft_strlen(str), ' ');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-	}
+		len = ft_strlen(str);
+	ft_handle_padding(mod, str, len);
+	free(str);
 	return (0);
 }
 
@@ -113,23 +83,21 @@ int		ft_conv_p(t_modulo *mod, uintptr_t *p)
 	if (!(str = ft_itoa_base_addr((uintptr_t)p, "0123456789abcdef")))
 		return (-1);
 	len = ft_strlen(str) + 2;
+	if (!p && mod->width.precision == 0)
+		len -= 1;
 	if (mod->flags.minus == true)
 	{
 		ft_fill_buff_s(mod, 2, "0x");
-		ft_fill_buff_s(mod, ft_strlen(str), str);
-		ft_fill_padding(mod, mod->width.padding - len, ' ');
-	}
-	else if (mod->flags.zero == true)
-	{
-		ft_fill_buff_s(mod, 2, "0x");
-		ft_fill_padding(mod, mod->width.padding - len, '0');
-		ft_fill_buff_s(mod, ft_strlen(str), str);
+		if (!(!p && mod->width.precision == 0))
+			ft_fill_buff_s(mod, len, str);
+		ft_handle_padding2(mod, len);
 	}
 	else
 	{
-		ft_fill_padding(mod, mod->width.padding - len, ' ');
+		ft_handle_padding2(mod, len);
 		ft_fill_buff_s(mod, 2, "0x");
-		ft_fill_buff_s(mod, ft_strlen(str), str);
+		if (!(!p && mod->width.precision == 0))
+			ft_fill_buff_s(mod, len, str);
 	}
 	return (0);
 }

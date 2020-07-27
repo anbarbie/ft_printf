@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 16:34:05 by antbarbi          #+#    #+#             */
-/*   Updated: 2019/11/28 16:34:56 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/27 15:12:55 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_fill_string(unsigned int n, int index, char *str)
 	str[index] = n % 10 + '0';
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	char			*str;
 	unsigned int	nbr;

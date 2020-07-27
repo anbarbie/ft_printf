@@ -52,6 +52,8 @@ void	ft_init_struct(t_modulo *mod);
 void	ft_handle_str(t_modulo *mod, int len);
 void	ft_handle_int(t_modulo *mod, char *str, int len, int neg);
 void	ft_handle_buff_padding_int(t_modulo *mod, int len, int negative);
+void	ft_handle_padding(t_modulo *mod, char *str, int len);
+void	ft_handle_padding2(t_modulo *mod, int len);
 int		ft_printf(char *format, ...);
 int		ft_read_type(t_modulo *mod, va_list args);
 int		ft_write_full_buff(t_modulo *mod);

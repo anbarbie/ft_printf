@@ -6,12 +6,43 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/24 15:55:07 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/24 16:39:30 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:38:05 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+void	ft_handle_padding2(t_modulo *mod, int len)
+{
+	if (mod->width.precision > len)
+		len = mod->width.precision;
+	if (mod->flags.zero == true)
+	{
+		if (mod->width.precision >= 0 || mod->flags.minus == true)
+			ft_fill_padding(mod, mod->width.padding - len, ' ');
+		else
+			ft_fill_padding(mod, mod->width.padding - len, '0');
+	}
+	else
+		ft_fill_padding(mod, mod->width.padding - len, ' ');
+}
+
+void	ft_handle_padding(t_modulo *mod, char *str, int len)
+{
+	if (mod->flags.minus == true)
+	{
+		ft_fill_padding(mod, mod->width.precision - len, '0');
+		ft_fill_buff_s(mod, len, str);
+		ft_handle_padding2(mod, len);
+	}
+	else
+	{
+		ft_handle_padding2(mod, len);
+		ft_fill_padding(mod, mod->width.precision - len, '0');
+		ft_fill_buff_s(mod, len, str);
+	}
+}
 
 void	ft_handle_str(t_modulo *mod, int len)
 {
