@@ -6,12 +6,11 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:52:38 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/24 16:10:04 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:06:18 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_write_full_buff(t_modulo *mod)
 {

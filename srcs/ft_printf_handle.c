@@ -6,12 +6,11 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:53:36 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/28 14:54:35 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:06:30 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 void	ft_handle_padding2(t_modulo *mod, int len)
 {

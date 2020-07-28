@@ -6,12 +6,11 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:37:05 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/27 15:30:38 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:06:11 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 char	*ft_parse_flags(char *str, t_modulo *mod)
 {

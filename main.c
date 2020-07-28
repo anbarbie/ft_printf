@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 02:00:40 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/28 14:51:38 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:26:53 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 
 int	main()
 {
-	printf("\nreal : [%d]", printf("real : [%d]", 50) - 9);
-	printf("\nfake : [%d]\n", ft_printf("fake : [%d]\n", 50) - 10);
+	ft_printf("%c\n", 'c');
+	ft_printf("%s\n", "abc");
+	ft_printf("%p\n", 50);
+	ft_printf("%d\n", 39);
+	ft_printf("%i\n", 38);
+	ft_printf("%u\n", 10);
+	ft_printf("%x\n", 16);
+	ft_printf("%X\n", 16);
+	ft_printf("%%\n");
 	return (0);
 }

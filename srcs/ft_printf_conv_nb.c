@@ -6,12 +6,11 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:07:27 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/28 14:52:39 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:20:52 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_conv_int(t_modulo *mod, int n)
 {
@@ -99,5 +98,6 @@ int		ft_conv_p(t_modulo *mod, uintptr_t *p)
 		if (!(!p && mod->width.precision == 0))
 			ft_fill_buff_s(mod, len, str);
 	}
+	free(str);
 	return (0);
 }

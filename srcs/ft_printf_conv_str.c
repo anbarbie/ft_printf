@@ -6,12 +6,11 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:07:29 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/24 16:10:07 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:06:23 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_conv_c(t_modulo *mod, int c)
 {

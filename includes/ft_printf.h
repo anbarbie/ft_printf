@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:53:36 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/28 15:02:29 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 15:08:08 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <stdint.h>
+# include "../libft/libft.h"
 
 typedef struct		s_flags
 {
