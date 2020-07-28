@@ -6,7 +6,7 @@
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:07:27 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/27 15:09:04 by antbarbi         ###   ########.fr       */
+/*   Updated: 2020/07/28 14:52:39 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		ft_conv_u(t_modulo *mod, unsigned int n)
 	if (!(str = ft_itoa_base_unsigned(n, "0123456789")))
 		return (-1);
 	if (mod->width.precision == 0 && n == 0)
-		len  = 0;
+		len = 0;
 	else
 		len = ft_strlen(str);
 	ft_handle_padding(mod, str, len);

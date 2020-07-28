@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antbarbi <antbarbi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/24 15:55:07 by antbarbi          #+#    #+#             */
-/*   Updated: 2020/07/27 14:38:05 by antbarbi         ###   ########.fr       */
+/*   Created: 2020/07/28 14:53:36 by antbarbi          #+#    #+#             */
+/*   Updated: 2020/07/28 14:54:35 by antbarbi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_handle_str(t_modulo *mod, int len)
 		ft_fill_padding(mod, mod->width.padding - len, ' ');
 }
 
-void		ft_handle_buff_padding_int(t_modulo *mod, int len, int negative)
+void	ft_handle_buff_padding_int(t_modulo *mod, int len, int negative)
 {
 	if (mod->width.precision > len)
 		len = mod->width.precision;
