@@ -4,3 +4,9 @@ The ft_printf function is a custom implementation of the printf function from th
 ```c
 int ft_printf(const char *, ...);
 ```
+## Return value
+Returns the number of printed characters.
+## Compilation
+```shell
+make all
+```
